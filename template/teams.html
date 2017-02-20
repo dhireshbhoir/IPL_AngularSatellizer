@@ -1,0 +1,71 @@
+<div class="main-content">
+    <div class="all-teams page">
+        <ul class="teams-list" ng-repeat="team in teams" active="team.active">
+            <li data-index="{{team.id}}" ng-click="teamPlayers(team.id)" data-toggle="modal" data-target="#myModal">
+                <a class="team-photo ">           <!-- <span class="tooltiptext">{{team.team_name}}</span> -->
+                    <img class="img-responsive" src="{{team.team_img_url}}" height="140" width="200" alt="{{team.team_name}}" /></a>
+                <h2><a> {{team.team_name}} </a></h2>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="dismiss()">&times;</button>
+                <h4 class="modal-title" align="center">{{players.team_name}}</h4>
+                <hr>
+                <span class="teams_details"><div class="col-sm-6">
+                  <b>Team Coach : </b>{{players.team_coach}}
+                </div><div class="col-sm-6">
+                  <b>Team Captain : </b>
+            {{players.team_captain}}
+          </div><div class="col-sm-6">
+            <b>Home Venue : </b>
+            {{players.team_home_venue}}</div>
+            <div class="col-sm-6"><b>Team Owner : </b>
+            {{players.team_owner}}</div>
+          </span>
+            </div>
+            <div class="modal-body">
+                    <span id="filter">Filter by role :</span>
+                    <select id="filter" ng-model = "globalSearch.player_role">
+                      <option value="">All Players</option>
+                      <option value="Batsman">Batsman</option>
+                      <option value="Bowler">Bowler</option>
+                      <option value="Wicketkeeper-batsman">Wicketkeeper</option>
+                    </select>
+                    <br><br><br>
+                <div class="row">
+                    <span ng-repeat="player in players.team_players | filter:globalSearch">
+                       <div class="col-sm-6 col-xs-12 col-md-4">
+                        <div class="dropdown">
+                        <div class="thumbnail" align="center">
+                        <a href="#" data-toggle="dropdown" target="dropdown-menu">
+                    <img src="{{player.player_img_url}}" alt="{{player.player_name}}" width="200" height="300"/>
+                    <div class="caption">
+                        <p>{{player.player_name}}</p>
+                    </div>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><b>Nationality :</b> {{player.player_nationality}}</li>
+                    <li><b>Role :</b> {{player.player_role}}</li>
+                    <li><b>Dob :</b> {{player.player_dob}}</li>
+                    <li><b>Batting style :</b> {{player.player_batting_style}}</li>
+                    <li><b>Bowling style :</b> {{player.player_bowling_style}}</li>
+                </ul>
+              </div>
+                </div>
+                </div>
+               </span>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="close" data-dismiss="modal" ng-click="dismiss()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

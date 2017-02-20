@@ -1,0 +1,19 @@
+<div id="login" class="card col-md-6 col-sm-6 col-xs-6 col-xs-offset-3" style="padding-bottom:0; padding-bottom: 0; background-color:#A9A9A9">
+    <center><h2>Login</h2></center>
+<form role="form" name="loginForm" >
+    <div class="form col-md-10 col-md-offset-1">
+        <label>Email</label>
+        <input type="email" ng-model="email" name="email1" class="form-control" ng-valid-required ="@" placeholder="Email Address" required/>
+    </div>
+    <div class="form col-md-10 col-md-offset-1">
+        <label>Password</label>
+        <input type="password" ng-model="Password" name="password" class="form-control" ng-pattern="password_pattern" placeholder="password" required/>
+    </div>
+    <div id"" class="submit1 form col-md-10 col-md-offset-1">
+      <br>
+        <button type="submit1" ng-click="login()" ng-disabled="loginForm.$invalid" class="btn btn-primary btn-block">Sign In</button>
+        <span ng-show="loginForm.email1.$error.email" style="color:red;"><center>Please enter valid email address</center></span>
+        <span ng-show="loginForm.password.$error.pattern" style="color:red;"><center>password contains alpha,num,spec</center></span>
+    </div>
+</form>
+</div>
